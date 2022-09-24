@@ -1,0 +1,11 @@
+{% extends "errors/errors.html" %}
+
+{% block title %}404 PRE{% endblock %}
+
+{% block content %}
+<div>
+	<span class="error">500 ERROR</span>
+	<span class="why">Something went wrong!</span>
+	<a href="{{ url_for('biscuithome') }}">GO BACK</a>
+</div>
+{% endblock %}

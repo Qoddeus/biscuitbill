@@ -1,0 +1,11 @@
+{% extends "errors/errors.html" %}
+
+{% block title %}403 PRE{% endblock %}
+
+{% block content %}
+<div>
+	<span class="error">403 ERROR</span>
+	<span class="why">You don't have permission to do that.</span>
+	<a href="{{ url_for('biscuithome') }}">GO BACK</a>
+</div>
+{% endblock %}

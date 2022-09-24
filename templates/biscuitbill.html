@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width, initial-scale=1" name="viewport">
+	<link href="{{ url_for('static', filename='biscuitbill.css') }}" rel="stylesheet">
+	<link href="{{ url_for('static', filename='fontawesome/css/all.css') }}" rel="stylesheet">
+	<link href="{{ url_for('static', filename='favicon.ico') }}" rel="shortcut icon">
+	<title>biscuitbill</title> <!-- TITLE -->
+</head>
+<body>
+	<main>
+		<section class="column one">	
+			<span onclick="open_section('default')">biscuitbill</span>
+			<nav>
+				<a href=""><i class="fa-brands fa-square-twitter"></i></a>
+				<a href=""><i class="fa-brands fa-square-youtube"></i></a>
+			</nav>
+		</section>
+
+		<div class="section one" id="default">
+			<div id="light-mode-toggle" onclick="timo()">
+				<span>bisc</span>
+				<span>uit.</span>
+				<span>bill</span>
+			</div>
+			<p>"TEAM NAME DITO"</p>
+		</div>
+
+		<section class="column two" onclick="open_section('roster')">
+			<i class="fa-solid fa-dice-one"></i>
+			<span>roster</span>
+		</section>
+
+		<div class="section two" id="roster">
+			<div class="inside two">
+				<table>
+				{% for player in players %}
+					<tr>
+						<td>
+							<div class="one">
+								<span class="numb">{{ player["numero"] }}</span>
+								<span class="play">{{ player["plays"] }}</span>
+							</div>
+						</td>
+
+						<td><img src="static/images/{{ player['image'] }}"></td>
+						
+						<td>
+							<span class="name">{{ player["player"] }}</span>
+							<div class="hiwei">
+								<span>HT: {{ player["ht"] }}</span>
+								<span>WT: {{ player["wt"] }}</span>
+							</div>
+						</td>
+					</tr>
+				{% endfor %}
+				</table>
+			</div>
+		</div>
+
+		<section class="column three" onclick="open_section('players')">
+			<i class="fa-solid fa-dice-two"></i>
+			<span>players</span>
+		</section>
+
+		<div class="section three" id="players">
+			<div class="inside three">
+				{% for player in players %}
+				<div class="card">
+					<img src="static/images/{{ player['image'] }}">
+					<span class="top">{{ player["player"] }}</span>
+					<span class="bot">{{ player["numero"] }} {{ player["point"] }}</span>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+	</main>
+
+	<script src="{{ url_for('static', filename='biscuitbill.js') }}"></script>
+</body>
+</html>
